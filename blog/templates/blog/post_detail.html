@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<script type="text/javascript">
+    window.onscroll = function() {myFunction()};
+
+    function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("myBar").style.width = scrolled + "%";
+}
+</script>
+{% if post.header_image.url != null %}
+    <img  id="post_detail_img" src='{{ post.header_image.url }}'>
+    <a href="{{ posts.image_source }}"><p style="margin-left: 15%; padding-top: 2%; margin-right: 15%;">Source: {{ post.image_source }}</p></a>
+{% endif %}
+
+<div class="post_detail_content">
+    <h1>{{ post.title }}</h1>
+    </br>
+    <h4>Devanshu Saxena | {{ post.created_on }}</h4>
+    </br>
+    <p id="text" style="letter-spacing: 10px;">{{ post.content | safe | linebreaks }}</p>
+</div>
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="home">
+    <div class="mr-parent">
+        <div class="mr-main-child">
+            <div class="mr-title">
+                <a href="{% url 'post_detail' mr_post.slug %}"><h2>{{ mr_post }}</h2></a>
+                <h5>{{ mr_post.created_on }}</h5>
+            </div>
+            <div class="mr-content">
+                <p id="text">{{ mr_post.short_description|safe|linebreaks|slice:":400" }}</p>
+            </div>
+        </div>
+        <div class="mr-image-child">
+            <img src="{{ mr_post.header_image.url }}">
+        </div>
+    </div>
+    <hr class="between">
+
+    <div>
+        <div class="parent">
+            {% for posts in queryset %}
+                {% if mr_post.slug != posts.slug %}
+                    <div class="title-child">
+                        <a href="{% url 'post_detail' posts.slug %}"><h2>{{ posts }}</h2></a>
+                        <h5>{{ posts.created_on }}</h5>
+                    </div>
+                    <div class="content-child">
+                        <p id="text">{{ posts.short_description|safe|linebreaks|slice:":200" }}...</p>
+                    </div>
+                    <div class="image-child">
+                        <img src="{{ posts.header_image.url }}">
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <hr class="between">
+    </div>
+</div>
+{% endblock content %}

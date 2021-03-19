@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+{% block content %}
+<div>
+    <div class="parent">
+        {% for extras in queryset %}
+            <div class="title-child">
+                <a href="{% url 'extras_detail' extras.slug %}"><h2>{{ extras}}</h2></a>
+                <h5>{{ extras.created_on }}</h5>
+            </div>
+            <div class="content-child">
+                <p id="text">{{ extras.short_description|safe|linebreaks|slice:":200" }}</p>
+            </div>
+            <div class="image-child">
+                <img src="{{ extras.header_image.url }}">
+            </div>
+        {% endfor %}
+    </div>
+    <hr class="between">
+</div>
+    
+
+</div>
+{% endblock content %}

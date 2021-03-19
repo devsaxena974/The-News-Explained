@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div>
+    <h1> Subscribe to the weekly Technotopia newletter: </h1>
+    <form action="{% url 'email' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit" class="button">Submit</button>
+    </form>
+</div>
+{% endblock content %}
