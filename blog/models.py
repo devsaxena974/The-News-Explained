@@ -29,7 +29,7 @@ class Post(models.Model):
         return self.title
 
 class Email(models.Model):
-    text = models.TextField(max_length=150, default='')
+    text = models.CharField(max_length=150, default='')
 
     def __str__(self):
         return self.text

@@ -10,11 +10,15 @@
                 <h5>{{ mr_post.created_on }}</h5>
             </div>
             <div class="mr-content">
-                <p id="text">{{ mr_post.short_description|safe|linebreaks|slice:":400" }}</p>
+                <a href="{% url 'post_detail' mr_post.slug %}">
+                    <p id="text">{{ mr_post.short_description|safe|linebreaks|slice:":400" }}</p>
+                </a>
             </div>
         </div>
         <div class="mr-image-child">
-            <img src="{{ mr_post.header_image.url }}">
+            <a href="{% url 'post_detail' mr_post.slug %}">
+                <img src="{{ mr_post.header_image.url }}">
+            </a>
         </div>
     </div>
     <hr class="between">
@@ -28,10 +32,14 @@
                         <h5>{{ posts.created_on }}</h5>
                     </div>
                     <div class="content-child">
-                        <p id="text">{{ posts.short_description|safe|linebreaks|slice:":200" }}...</p>
+                        <a href="{% url 'post_detail' posts.slug %}">
+                            <p id="text">{{ posts.short_description|safe|linebreaks|slice:":200" }}...</p>
+                        </a>
                     </div>
                     <div class="image-child">
-                        <img src="{{ posts.header_image.url }}">
+                        <a href="{% url 'post_detail' posts.slug %}">
+                            <img src="{{ posts.header_image.url }}">
+                        </a>
                     </div>
                 {% endif %}
             {% endfor %}

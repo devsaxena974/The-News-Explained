@@ -13,9 +13,11 @@
         <!-- Navigation -->
         <div class="nav">
             <nav>
-                <div class="logo">
-                    <h4>Technotopia</h4>
-                </div>
+                <a href="{% url 'home' %}">
+                    <div class="logo">
+                        <h4>Technotopia</h4>
+                    </div>
+                </a>
                 <ul class="nav-links">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'extras' %}">Extras</a></li>

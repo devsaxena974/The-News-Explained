@@ -3,12 +3,22 @@
 
 
 {% block content %}
-<div>
-    <h1> Subscribe to the weekly Technotopia newletter: </h1>
+<div class="subscribe">
+    <h1> Subscribe to the Weekly Newletter</h1>
     <form action="{% url 'email' %}" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button name="submit" class="button">Submit</button>
+        <div class="form">
+        {% for field in form %}
+            <label>{{ field.label_tag }}</label>
+            {{ field }}
+        {% endfor %}
+        </div>
+        <input class="button" type="submit" value="Subscribe"></button>
     </form>
+</div>
+<div class="about-subscribe">
+    <h1>About the Newsletter</h1>
+    <p>The weekly Technotopia newsletter is a condensed compilation of all the latest and greatest in science and technology sent straight to your inbox.</p>
+    <p>If you wish to unsubscribe, you can do so at any time by following the link contained in the newsletter.</p>
 </div>
 {% endblock content %}
